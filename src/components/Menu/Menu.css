@@ -63,6 +63,7 @@ body {
 
 @media (max-width: 800px) {
   a.ButtonLink {
+    color: var(--white);
     position: fixed;
     left: 0;
     right: 0;
