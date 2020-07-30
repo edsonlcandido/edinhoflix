@@ -15,7 +15,6 @@ const Container = styled.ul`
     height: 30px;
     transform: initial;
     &:before {
-      color:${props => console.log(props.color)} !important;
       font-size: 30px;
     }
   }
@@ -25,6 +24,15 @@ const Container = styled.ul`
   }
   .slick-next {
     right: 16px;
+  }
+`;
+
+const SliderComponent = styled(SlickSlider)`
+  margin-bottom: 40px;
+  .slick-arrow{
+    &:before{
+      color:${props=>props.categoryColor};
+    }
   }
 `;
 
@@ -41,28 +49,18 @@ export const SliderItem = styled.li`
   }
 `;
 
-function ColorArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style}}
-      onClick={onClick}
-    />
-  );
-}
-
-const Slider = ({ children }) => (
+const log = (text)=>{
+  console.log(text)
+};
+const Slider = ({ children }) => (  
     <Container>
-      <SlickSlider {...{
+      <SliderComponent categoryColor="#e58837" {...{
             dots: false,
             infinite: true,
             speed: 300,
             centerMode: false,
             variableWidth: true,
             adaptiveHeight: true,
-            nextArrow: <ColorArrow />,
-            prevArrow: <ColorArrow />,
             responsive: [
               {
                 breakpoint:800,
@@ -75,7 +73,7 @@ const Slider = ({ children }) => (
         }
       >
         {children}
-      </SlickSlider>
+      </SliderComponent>
     </Container>
   );
   
