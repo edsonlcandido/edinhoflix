@@ -52,9 +52,9 @@ export const SliderItem = styled.li`
 const log = (text)=>{
   console.log(text)
 };
-const Slider = ({ children }) => (  
-    <Container>
-      <SliderComponent categoryColor="#e58837" {...{
+const Slider = ({ children, categoryColor}) => (  
+    <Container categoryColor={categoryColor}>
+      <SliderComponent categoryColor={categoryColor} {...{
             dots: false,
             infinite: true,
             speed: 300,
